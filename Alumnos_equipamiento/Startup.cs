@@ -8,6 +8,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json.Serialization;
 using Alumnos_equipamiento.Models;
+using Alumnos_equipamiento.Services.Interfaces;
+using Alumnos_equipamiento.Services;
 
 namespace Alumnos_equipamiento
 {
@@ -33,6 +35,9 @@ namespace Alumnos_equipamiento
                     NamingStrategy = new SnakeCaseNamingStrategy()
                 };
             });
+
+            // Inyecto dependencias
+            services.AddScoped<IAlumnoService, AlumnoService>();
 
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration =>

@@ -1,19 +1,19 @@
 using System;
-using CeluGamaSystem.Dtos;
-using CeluGamaSystem.Exceptions;
+using Alumnos_equipamiento.Dtos;
+using Alumnos_equipamiento.Services.Exceptions;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Alumnos_equipamiento.Controllers
 {
-    [Route("api/error")]
     [ApiController]
     public class ErrorController : ControllerBase
     {
+        [Route("/error")]
         public IActionResult LogError()
         {
-            IExceptionHandlerPathFeature exFeature = HttpContext.Features.Get<IExceptionHandlerPathFeature>();
+            IExceptionHandlerFeature exFeature = HttpContext.Features.Get<IExceptionHandlerFeature>();
             if (exFeature != null)
             {
                 if (exFeature.Error is ServiceException Error)
